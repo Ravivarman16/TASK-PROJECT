@@ -1,4 +1,4 @@
-#creating pod via deployment with the type rolling update
+# Creating a Deployment with the type RollingUpdate
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -6,9 +6,9 @@ metadata:
   name: dp-pod
 spec:
   replicas: 3
-  strategy: 
+  strategy:
     type: RollingUpdate
-  selector: 
+  selector:
     matchLabels:
       app: live-app
   template:
@@ -18,22 +18,20 @@ spec:
     spec:
       containers:
         - name: production-container
-          image: ravivarman46/image
+          image: ravivarman46/testimage
           ports:
-            containerPort: 80
+            - containerPort: 80
 ---
-#creating service for the pod:
+# Creating a Service for the pod
 apiVersion: v1
 kind: Service
 metadata:
- name: svc
+  name: svc
 spec:
   type: NodePort
   selector:
-    labels:
-      app: live-app
+    app: live-app
   ports:
-    port: 8080
-    targetPort: 80
-    nodePort: 30009
-
+    - port: 8080
+      targetPort: 80
+      nodePort: 30008
