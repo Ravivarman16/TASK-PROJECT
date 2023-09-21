@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: production-container
-          image: ravivarman46/testimage
+          image: ravivarman46/image
           ports:
             - containerPort: 80
 ---
@@ -34,4 +34,4 @@ spec:
   ports:
     - port: 8080
       targetPort: 80
-      nodePort: 30008
+      nodePort: 30009
